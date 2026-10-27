@@ -3,63 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AQUATER - Admin Dispatcher</title>
+  <title>AQUATER Admin - Claymorphism</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      background-color: #f0f4f8;
+    }
+    /* Claymorphism Styling Engine */
+    .clay-card {
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff, inset 3px 3px 6px rgba(255,255,255,0.8);
+    }
+    .clay-input {
+      background: #f0f4f8;
+      border-radius: 18px;
+      box-shadow: inset 5px 5px 9px #d1d9e6, inset -5px -5px 9px #ffffff;
+      border: none;
+    }
+    .clay-input:focus {
+      outline: 2px solid #3b82f6;
+    }
+    .clay-btn-primary {
+      background: linear-gradient(145deg, #3b82f6, #2563eb);
+      border-radius: 20px;
+      box-shadow: 6px 6px 14px #a3c1f7, -6px -6px 14px #ffffff, inset 2px 2px 4px rgba(255,255,255,0.4);
+      color: white;
+    }
+    .clay-btn-primary:active {
+      box-shadow: inset 4px 4px 8px #1d4ed8, inset -4px -4px 8px #60a5fa;
+    }
+    .clay-btn-secondary {
+      background: #f0f4f8;
+      border-radius: 16px;
+      box-shadow: 4px 4px 8px #d1d9e6, -4px -4px 8px #ffffff;
+    }
+    .clay-btn-secondary:active {
+      box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;
+    }
+    .clay-badge {
+      border-radius: 14px;
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.06);
+    }
+  </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen p-4 md:p-8">
+<body class="text-slate-700 min-h-screen p-4 md:p-8">
   <div class="max-w-4xl mx-auto space-y-6">
     
     <!-- Header -->
-    <header class="flex justify-between items-center bg-slate-800/80 backdrop-blur p-5 rounded-2xl border border-slate-700/50 shadow-xl">
+    <header class="clay-card p-6 flex justify-between items-center">
       <div>
-        <h1 class="text-2xl font-bold tracking-tight text-cyan-400">AQUATER Dispatcher</h1>
-        <p class="text-xs text-slate-400 mt-1">Panel Input Pesanan & Monitoring Kurir</p>
+        <h1 class="text-2xl font-extrabold text-blue-600 tracking-wide">AQUATER Admin</h1>
+        <p class="text-xs text-slate-400 font-bold mt-1">Panel Dispatcher & Monitoring</p>
       </div>
-      <div class="text-right">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Firebase Connected
-        </span>
+      <div class="clay-badge bg-emerald-100 text-emerald-700 px-4 py-2 text-xs font-bold flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span> Realtime Active
       </div>
     </header>
 
-    <!-- Grid Container -->
     <div class="grid md:grid-cols-5 gap-6">
       
-      <!-- Form Input Pesanan (2 Kolom) -->
-      <div class="md:col-span-2 bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50 h-fit">
-        <h2 class="text-lg font-semibold text-slate-200 mb-4 flex items-center gap-2">
-          <span>+</span> Input Pesanan Baru
+      <!-- Form Input Pesanan -->
+      <div class="md:col-span-2 clay-card p-6 space-y-4">
+        <h2 class="text-base font-extrabold text-slate-800 flex items-center gap-2">
+          <span>💧</span> Input Pesanan Baru
         </h2>
+        
         <form id="orderForm" class="space-y-4">
           <div>
-            <label class="block text-xs font-medium text-slate-400 mb-1">Nama Pelanggan</label>
-            <input type="text" id="custName" required placeholder="Contoh: Pak Budi"
-              class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-cyan-500 transition">
+            <label class="block text-xs font-bold text-slate-500 mb-1.5 ml-1">Nama Pelanggan</label>
+            <input type="text" id="custName" required placeholder="Contoh: Bu Ratna"
+              class="w-full clay-input px-4 py-3 text-sm text-slate-800 transition">
           </div>
+
           <div>
-            <label class="block text-xs font-medium text-slate-400 mb-1">Alamat / Patokan</label>
-            <textarea id="custAddress" required rows="2" placeholder="Contoh: Depan Masjid Nurul Haq"
-              class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-cyan-500 transition"></textarea>
+            <label class="block text-xs font-bold text-slate-500 mb-1.5 ml-1">Alamat / Patokan</label>
+            <textarea id="custAddress" required rows="2" placeholder="Contoh: Depan Kedai Nasi..."
+              class="w-full clay-input px-4 py-3 text-sm text-slate-800 transition"></textarea>
           </div>
+
           <div>
-            <label class="block text-xs font-medium text-slate-400 mb-1">Jumlah Galon</label>
+            <label class="block text-xs font-bold text-slate-500 mb-1.5 ml-1">Jumlah Galon</label>
+            <!-- Tombol Cepat Jumlah Galon -->
+            <div class="flex gap-2 mb-2">
+              <button type="button" onclick="setQty(1)" class="clay-btn-secondary px-3 py-1.5 text-xs font-bold text-blue-600 flex-1">+1 Galon</button>
+              <button type="button" onclick="setQty(2)" class="clay-btn-secondary px-3 py-1.5 text-xs font-bold text-blue-600 flex-1">+2 Galon</button>
+              <button type="button" onclick="setQty(3)" class="clay-btn-secondary px-3 py-1.5 text-xs font-bold text-blue-600 flex-1">+3 Galon</button>
+            </div>
             <input type="number" id="qty" min="1" value="1" required
-              class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-cyan-500 transition">
+              class="w-full clay-input px-4 py-3 text-sm text-slate-800 text-center font-bold transition">
           </div>
-          <button type="submit"
-            class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-3 rounded-xl shadow-lg shadow-cyan-500/20 transition duration-200 active:scale-98">
-            Terbitkan Job Antar
+
+          <button type="submit" class="w-full clay-btn-primary py-4 font-extrabold text-sm tracking-wide transition transform active:scale-95">
+            🚀 Terbitkan Job Antar
           </button>
         </form>
       </div>
 
-      <!-- Live Monitoring (3 Kolom) -->
-      <div class="md:col-span-3 bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
-        <h2 class="text-lg font-semibold text-slate-200 mb-4">Daftar Status Pesanan</h2>
-        <div id="adminJobList" class="space-y-3 max-h-[500px] overflow-y-auto pr-1">
-          <p class="text-sm text-slate-500 italic">Belum ada pesanan aktif...</p>
+      <!-- Live Monitoring & Filter -->
+      <div class="md:col-span-3 clay-card p-6 space-y-4">
+        <div class="flex justify-between items-center flex-wrap gap-2">
+          <h2 class="text-base font-extrabold text-slate-800">Daftar Status Pesanan</h2>
+          
+          <!-- Filter Buttons -->
+          <div class="flex gap-1 bg-slate-200/50 p-1 rounded-xl text-xs font-bold">
+            <button onclick="filterStatus('ALL')" class="px-2.5 py-1 rounded-lg text-slate-600 focus:bg-white focus:shadow">Semua</button>
+            <button onclick="filterStatus('AVAILABLE')" class="px-2.5 py-1 rounded-lg text-amber-600 focus:bg-white focus:shadow">Menunggu</button>
+            <button onclick="filterStatus('PROGRESS')" class="px-2.5 py-1 rounded-lg text-blue-600 focus:bg-white focus:shadow">Proses</button>
+          </div>
+        </div>
+
+        <div id="adminJobList" class="space-y-3 max-h-[480px] overflow-y-auto pr-1">
+          <p class="text-sm text-slate-400 italic text-center py-8">Memuat pesanan...</p>
         </div>
       </div>
 
@@ -69,7 +126,18 @@
   <script type="module">
     import { db, ref, push, set, onValue } from './firebase-config.js';
 
-    // Submit Order Baru
+    let allOrders = {};
+    let currentFilter = 'ALL';
+
+    window.setQty = (val) => {
+      document.getElementById('qty').value = val;
+    };
+
+    window.filterStatus = (status) => {
+      currentFilter = status;
+      renderOrders();
+    };
+
     document.getElementById('orderForm').addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('custName').value;
@@ -81,7 +149,7 @@
         customerName: name,
         address: address,
         qty: qty,
-        status: 'AVAILABLE', // AVAILABLE -> TAKEN -> AT_DEPOT -> COMPLETED
+        status: 'AVAILABLE',
         takenBy: null,
         totalCash: qty * 7000,
         depotCut: qty * 5000,
@@ -90,49 +158,59 @@
       });
 
       document.getElementById('orderForm').reset();
+      document.getElementById('qty').value = 1;
     });
 
-    // Realtime Listener untuk Dashboard Admin
     onValue(ref(db, 'orders'), (snapshot) => {
+      allOrders = snapshot.val() || {};
+      renderOrders();
+    });
+
+    function renderOrders() {
       const container = document.getElementById('adminJobList');
       container.innerHTML = '';
-      const data = snapshot.val();
 
-      if (!data) {
-        container.innerHTML = '<p class="text-sm text-slate-500 italic">Belum ada pesanan masuk...</p>';
+      const keys = Object.keys(allOrders).reverse();
+      if (keys.length === 0) {
+        container.innerHTML = '<p class="text-sm text-slate-400 italic text-center py-8">Belum ada pesanan aktif...</p>';
         return;
       }
 
-      Object.keys(data).reverse().forEach(id => {
-        const order = data[id];
-        let statusBadge = '';
+      keys.forEach(id => {
+        const order = allOrders[id];
 
+        // Filter Logic
+        if (currentFilter === 'AVAILABLE' && order.status !== 'AVAILABLE') return;
+        if (currentFilter === 'PROGRESS' && (order.status === 'AVAILABLE' || order.status === 'COMPLETED')) return;
+
+        let statusBadge = '';
         if (order.status === 'AVAILABLE') {
-          statusBadge = `<span class="px-2.5 py-1 text-xs rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">Menunggu Kurir</span>`;
+          statusBadge = `<span class="clay-badge bg-amber-100 text-amber-700 px-3 py-1 text-xs font-bold">⏳ Menunggu Kurir</span>`;
         } else if (order.status === 'TAKEN') {
-          statusBadge = `<span class="px-2.5 py-1 text-xs rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Jemput Galon (${order.takenBy})</span>`;
+          statusBadge = `<span class="clay-badge bg-blue-100 text-blue-700 px-3 py-1 text-xs font-bold">🛵 Dijemput (${order.takenBy})</span>`;
         } else if (order.status === 'AT_DEPOT') {
-          statusBadge = `<span class="px-2.5 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Diisi di Depot</span>`;
+          statusBadge = `<span class="clay-badge bg-cyan-100 text-cyan-700 px-3 py-1 text-xs font-bold">💧 Diisi di Depot</span>`;
         } else {
-          statusBadge = `<span class="px-2.5 py-1 text-xs rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Selesai</span>`;
+          statusBadge = `<span class="clay-badge bg-emerald-100 text-emerald-700 px-3 py-1 text-xs font-bold">✅ Selesai</span>`;
         }
 
-        const card = `
-          <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700/60 flex justify-between items-start">
+        container.innerHTML += `
+          <div class="clay-card p-4 flex justify-between items-start">
             <div class="space-y-1">
               <div class="flex items-center gap-2">
-                <span class="font-bold text-slate-100">${order.customerName}</span>
-                <span class="text-xs text-slate-400">(${order.qty} Galon)</span>
+                <span class="font-extrabold text-slate-800">${order.customerName}</span>
+                <span class="clay-badge bg-blue-50 text-blue-600 px-2 py-0.5 text-xs font-bold">${order.qty} Galon</span>
               </div>
-              <p class="text-xs text-slate-400 leading-relaxed">${order.address}</p>
-              <p class="text-xs text-slate-500 font-mono">Tagih Cash: Rp ${order.totalCash.toLocaleString()}</p>
+              <p class="text-xs text-slate-500 font-medium">${order.address}</p>
+              <div class="text-xs text-slate-400 font-semibold pt-1">
+                Tagihan: <span class="text-slate-700 font-bold">Rp ${order.totalCash.toLocaleString()}</span>
+              </div>
             </div>
             <div>${statusBadge}</div>
           </div>
         `;
-        container.innerHTML += card;
       });
-    });
+    }
   </script>
 </body>
 </html>
