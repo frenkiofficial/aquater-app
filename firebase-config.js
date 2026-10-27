@@ -1,14 +1,11 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getDatabase, ref, push, set, update, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Konfigurasi Firebase AQUATER
 const firebaseConfig = {
   apiKey: "AIzaSyDfD-2E7Ki4VjXNAOmeo1vrScMUn9Xi9hA",
   authDomain: "aquater-express.firebaseapp.com",
+  databaseURL: "https://aquater-express-default-rtdb.firebaseio.com",
   projectId: "aquater-express",
   storageBucket: "aquater-express.firebasestorage.app",
   messagingSenderId: "779393459173",
@@ -16,6 +13,8 @@ const firebaseConfig = {
   measurementId: "G-3R61QBHTSS"
 };
 
-// Initialize Firebase
+// Inisialisasi Firebase & Realtime Database
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const db = getDatabase(app);
+
+export { db, ref, push, set, update, onValue };
